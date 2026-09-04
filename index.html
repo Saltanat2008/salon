@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Salon</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff5f8;
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            background: #4a1f35;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            animation: logo 2s infinite alternate;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffb6d2;
+            transform: translateY(-3px);
+            display: inline-block;
+        }
+
+        /* HERO */
+        .hero {
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(70, 20, 45, 0.65),
+                    rgba(70, 20, 45, 0.65)
+                ),
+                url("https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=80")
+                center/cover;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            animation: fadeDown 1.5s ease;
+        }
+
+        .hero p {
+            font-size: 20px;
+            animation: fadeUp 1.8s ease;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 60px 8%;
+        }
+
+        .title {
+            text-align: center;
+            color: #4a1f35;
+            font-size: 32px;
+            margin-bottom: 35px;
+            animation: fadeDown 1s ease;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.1);
+            transition: 0.4s;
+            animation: fadeIn 1s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(168,63,107,.3);
+        }
+
+        .card h3 {
+            color: #a83f6b;
+            margin-bottom: 15px;
+        }
+
+        /* SERVICES */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .service {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.1);
+            transition: 0.4s;
+            animation: fadeIn 1.2s ease;
+        }
+
+        .service:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(168,63,107,.3);
+        }
+
+        .service h3 {
+            color: #a83f6b;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4a1f35;
+            margin-top: 15px;
+        }
+
+        /* MASTERS */
+        .masters {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .master {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.1);
+            transition: 0.4s;
+            animation: fadeIn 1.4s ease;
+        }
+
+        .master:hover {
+            transform: translateY(-12px) scale(1.03);
+        }
+
+        .master img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            transition: 0.5s;
+        }
+
+        .master:hover img {
+            transform: rotate(5deg) scale(1.08);
+        }
+
+        .master h3 {
+            color: #a83f6b;
+            margin-bottom: 8px;
+        }
+
+        /* CONTACT */
+        .contact {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.1);
+            animation: fadeIn 1s ease;
+        }
+
+        .contact p {
+            margin: 12px 0;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            margin-top: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #a83f6b;
+            box-shadow: 0 0 10px rgba(168,63,107,.2);
+        }
+
+        textarea {
+            height: 120px;
+        }
+
+        button {
+            margin-top: 15px;
+            background: #a83f6b;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #4a1f35;
+            transform: scale(1.08);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #4a1f35;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* АНИМАЦИЯЛАР */
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes logo {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.08);
+            }
+        }
+
+        /* ТЕЛЕФОНҒА */
+        @media (max-width: 768px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                text-align: center;
+            }
+
+            nav a {
+                margin: 5px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .cards,
+            .services,
+            .masters {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">💗 BEAUTY SALON</div>
+
+    <nav>
+        <a href="#home">Басты бет</a>
+        <a href="#about">Біз туралы</a>
+        <a href="#services">Қызметтер</a>
+        <a href="#masters">Шеберлер</a>
+        <a href="#contacts">Байланыс</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div>
+        <h1>Сіздің сұлулығыңыз — біздің шабыт</h1>
+        <p>Beauty Salon — сұлулық пен стиль әлемі ✨</p>
+    </div>
+</section>
+
+<section id="about">
+    <h2 class="title">Біз туралы</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>💇 Шаштараз</h3>
+            <p>Шаш қию, бояу және сәндеу қызметтері.</p>
+        </div>
+
+        <div class="card">
+            <h3>💅 Маникюр</h3>
+            <p>Әдемі әрі ұқыпты маникюр жасау.</p>
+        </div>
+
+        <div class="card">
+            <h3>✨ Бет күтімі</h3>
+            <p>Бет терісіне арналған күтім процедуралары.</p>
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <h2 class="title">Қызметтеріміз</h2>
+
+    <div class="services">
+
+        <div class="service">
+            <h3>Шаш қию</h3>
+            <p>Кәсіби шаш қию қызметі</p>
+            <div class="price">5 000 ₸</div>
+        </div>
+
+        <div class="service">
+            <h3>Шаш бояу</h3>
+            <p>Заманауи шаш бояу технологиялары</p>
+            <div class="price">15 000 ₸</div>
+        </div>
+
+        <div class="service">
+            <h3>Маникюр</h3>
+            <p>Классикалық және заманауи маникюр</p>
+            <div class="price">6 000 ₸</div>
+        </div>
+
+        <div class="service">
+            <h3>Бет күтімі</h3>
+            <p>Теріні тазалау және күтім жасау</p>
+            <div class="price">8 000 ₸</div>
+        </div>
+
+        <div class="service">
+            <h3>Макияж</h3>
+            <p>Күнделікті және мерекелік макияж</p>
+            <div class="price">10 000 ₸</div>
+        </div>
+
+        <div class="service">
+            <h3>Шаш сәндеу</h3>
+            <p>Мерекелік және күнделікті шаш үлгісі</p>
+            <div class="price">7 000 ₸</div>
+        </div>
+
+    </div>
+</section>
+
+<section id="masters">
+    <h2 class="title">Біздің шеберлер</h2>
+
+    <div class="masters">
+
+        <div class="master">
+            <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=300&q=80">
+            <h3>Аружан</h3>
+            <p>Шаштараз-стилист</p>
+        </div>
+
+        <div class="master">
+            <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=300&q=80">
+            <h3>Айдана</h3>
+            <p>Маникюр шебері</p>
+        </div>
+
+        <div class="master">
+            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=300&q=80">
+            <h3>Мадина</h3>
+            <p>Визажист</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="contacts">
+    <h2 class="title">Байланыс</h2>
+
+    <div class="contact">
+
+        <p>📍 <b>Мекенжай:</b> Алматы қаласы</p>
+        <p>📞 <b>Телефон:</b> +7 700 123 45 67</p>
+        <p>✉ <b>Email:</b> beautysalon@mail.kz</p>
+        <p>🕘 <b>Жұмыс уақыты:</b> 09:00 – 21:00</p>
+
+        <form>
+            <input type="text" placeholder="Атыңыз">
+
+            <input type="tel" placeholder="Телефон нөміріңіз">
+
+            <textarea placeholder="Хабарламаңыз"></textarea>
+
+            <button type="submit">Жіберу</button>
+        </form>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 BEAUTY SALON | Барлық құқықтар қорғалған</p>
+</footer>
+
+</body>
+</html>
